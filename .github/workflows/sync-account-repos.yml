@@ -1,0 +1,40 @@
+name: Sync account repositories
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/sync_account_repos.py
+      - .github/workflows/sync-account-repos.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Sync repository catalog
+        env:
+          ACCOUNT_REPO_TOKEN: ${{ secrets.ACCOUNT_REPO_TOKEN }}
+          GITHUB_OWNER: andrewkcl
+        run: python3 scripts/sync_account_repos.py
+
+      - name: Commit catalog if it changed
+        run: |
+          git add README.md data/repos.json
+          if git diff --cached --quiet; then
+            echo "Repository catalog is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: refresh account repository catalog"
+          git push
