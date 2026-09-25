@@ -1,0 +1,16 @@
+{
+  "name": "andrewkcl",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "app-server",
+      "command": "npm start",
+      "description": "Runs the Express task-tracker server on http://localhost:3000"
+    }
+  ],
+  "ports": [
+    {
+      "port": 3000
+    }
+  ]
+}

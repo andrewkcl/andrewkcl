@@ -1,0 +1,27 @@
+{
+  "name": "andrewkcl",
+  "version": "1.0.0",
+  "description": "A small full-stack task tracker demo (Express API + browser UI).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.1"
+  }
+}
