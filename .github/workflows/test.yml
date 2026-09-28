@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Run account sync tests
+        run: python3 -m unittest tests.test_sync_account_repos -v
