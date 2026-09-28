@@ -23,7 +23,6 @@ jobs:
 
       - name: Sync repository catalog
         env:
-          ACCOUNT_REPO_TOKEN: ${{ secrets.ACCOUNT_REPO_TOKEN }}
           GITHUB_OWNER: andrewkcl
         run: python3 scripts/sync_account_repos.py
 

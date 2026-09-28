@@ -103,6 +103,17 @@ def owned_by(repos: list[Repo], owner: str) -> list[Repo]:
     return [repo for repo in repos if repo["owner"].lower() == wanted]
 
 
+def public_only(repos: list[Repo]) -> list[Repo]:
+    """Drop private repositories.
+
+    This catalog is published in a public README and in data/repos.json, so
+    private repositories are excluded here rather than relying on the sync
+    running without a token. Adding a PAT later widens what the API returns,
+    never what gets published.
+    """
+    return [repo for repo in repos if not repo["private"]]
+
+
 def sort_repos(repos: list[Repo]) -> list[Repo]:
     return sorted(repos, key=lambda repo: (repo["private"], repo["name"].lower()))
 
@@ -120,9 +131,8 @@ def list_account_repos(owner: str, token: str | None) -> tuple[list[Repo], str]:
             f"https://api.github.com/user/repos?{query}",
             github_headers(token),
         )
-        visibility = "public_and_private"
         repos = owned_by([normalize_repo(item) for item in pages if isinstance(item, Mapping)], owner)
-        return sort_repos(repos), visibility
+        return sort_repos(public_only(repos)), "public"
 
     query = urllib.parse.urlencode(
         {
@@ -136,7 +146,7 @@ def list_account_repos(owner: str, token: str | None) -> tuple[list[Repo], str]:
         github_headers(None),
     )
     repos = [normalize_repo(item) for item in pages if isinstance(item, Mapping)]
-    return sort_repos(owned_by(repos, owner)), "public"
+    return sort_repos(public_only(owned_by(repos, owner))), "public"
 
 
 def escape_cell(value: str) -> str:

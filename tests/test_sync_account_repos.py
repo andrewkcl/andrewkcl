@@ -18,6 +18,7 @@ from scripts.sync_account_repos import (
     normalize_repo,
     owned_by,
     parse_next_link,
+    public_only,
     render_repo_table,
     replace_readme_section,
     sort_repos,
@@ -102,6 +103,12 @@ class SyncAccountReposTest(unittest.TestCase):
     def test_owned_by_is_case_insensitive(self) -> None:
         repo = normalize_repo(SAMPLE_RAW)
         self.assertEqual(owned_by([repo], "AndrewKCL"), [repo])
+
+    def test_public_only_drops_private_repos(self) -> None:
+        public = normalize_repo(SAMPLE_RAW)
+        private = normalize_repo({**SAMPLE_RAW, "name": "secret", "private": True})
+        self.assertEqual(public_only([public, private]), [public])
+        self.assertEqual(public_only([private]), [])
 
 
 if __name__ == "__main__":

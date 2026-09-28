@@ -2,7 +2,7 @@
 
 GitHub account hub for [andrewkcl](https://github.com/andrewkcl).
 
-This profile lists **every repository** the account sync can see. Public repos refresh automatically. Private repos appear after you add an `ACCOUNT_REPO_TOKEN` Actions secret with `repo` scope.
+This profile lists every **public** repository on the account, refreshed automatically. Private repositories are deliberately excluded by `scripts/sync_account_repos.py` and are never published here.
 
 ## All repositories
 
