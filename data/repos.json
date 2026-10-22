@@ -1,8 +1,8 @@
 {
   "owner": "andrewkcl",
-  "generated_at": "2026-10-21T11:50:33+00:00",
+  "generated_at": "2026-10-22T11:53:59+00:00",
   "visibility": "public",
-  "count": 1,
+  "count": 2,
   "repositories": [
     {
       "name": "andrewkcl",
@@ -13,7 +13,21 @@
       "fork": false,
       "language": "Python",
       "stargazers_count": 0,
-      "updated_at": "2026-10-20T11:38:16Z",
+      "updated_at": "2026-10-21T11:50:37Z",
+      "default_branch": "main",
+      "topics": [],
+      "owner": "andrewkcl"
+    },
+    {
+      "name": "kawan-releases",
+      "full_name": "andrewkcl/kawan-releases",
+      "html_url": "https://github.com/andrewkcl/kawan-releases",
+      "description": "Kawan Android APK downloads (signed builds only; no source)",
+      "private": false,
+      "fork": false,
+      "language": null,
+      "stargazers_count": 0,
+      "updated_at": "2026-10-22T01:35:28Z",
       "default_branch": "main",
       "topics": [],
       "owner": "andrewkcl"
