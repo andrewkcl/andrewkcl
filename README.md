@@ -10,6 +10,7 @@ This profile lists every **public** repository on the account, refreshed automat
 | Repository | Visibility | Description | Language | Updated |
 | --- | --- | --- | --- | --- |
 | [andrewkcl](https://github.com/andrewkcl/andrewkcl) | public | — | Python | 2026-11-11 |
+| [kawan-releases](https://github.com/andrewkcl/kawan-releases) | public | Kawan Android APK downloads (signed builds only; no source) | — | 2026-11-24 |
 <!-- repos:end -->
 
 ## Connect Cursor to every repository
